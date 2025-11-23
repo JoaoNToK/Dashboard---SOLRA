@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Sistema de Doações de Alimentos</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>Sistema de Doações de Alimentos</h1>
+        <p class="subtitle">
+          Plataforma integrada para cadastro, gestão e monitoramento de doações
+        </p>
+      </div>
+      <div class="header-stats">
+        <div class="stat-card">
+          <span class="stat-number" id="totalAlimentos">0</span>
+          <span class="stat-label">Alimentos Cadastrados</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="alimentosDisponiveis">0</span>
+          <span class="stat-label">Disponíveis</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="alimentosProximosVencer">0</span>
+          <span class="stat-label">Próximos do Vencimento</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Formulário de Cadastro -->
+      <section class="card">
+        <h2 class="card-title">
+          <span class="icon">➕</span>
+          Cadastrar Nova Doação
+        </h2>
+        <form id="foodForm">
+          <div class="form-group">
+            <label for="name">Nome do Alimento:</label>
+            <input
+              type="text"
+              id="name"
+              required
+              placeholder="Ex: Arroz Integral 1kg"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="quantity">Quantidade:</label>
+              <input type="number" id="quantity" min="1" value="1" required />
+            </div>
+            <div class="form-group">
+              <label for="date">Data de Validade:</label>
+              <input type="date" id="date" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Local de Doação:</label>
+            <input
+              type="text"
+              id="location"
+              required
+              placeholder="Ex: Centro Comunitário Vila Esperança"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail do Doador (opcional):</label>
+            <input type="email" id="email" placeholder="doador@exemplo.com" />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">
+              <span class="btn-icon">📦</span>
+              Cadastrar Doação
+            </button>
+            <button type="button" id="seed" class="btn-secondary">
+              <span class="btn-icon">🎲</span>
+              Popular com Exemplos
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Lista de Doações -->
+      <section class="card">
+        <div class="list-header">
+          <h2 class="card-title">
+            <span class="icon">📋</span>
+            Doações Registradas
+          </h2>
+          <div class="controls">
+            <select id="filter">
+              <option value="all">Todos os Itens</option>
+              <option value="disponível">Disponíveis</option>
+              <option value="reservado">Reservados</option>
+              <option value="doado">Doados</option>
+              <option value="near">Próximos ao Vencimento</option>
+            </select>
+            <button id="deleteAll" class="btn-danger">
+              <span class="btn-icon">🗑️</span>
+              Limpar Tudo
+            </button>
+          </div>
+        </div>
+        <div id="foodList" class="list"></div>
+      </section>
+
+      <!-- Painel de Controle IoT -->
+      <section class="card">
+        <h2 class="card-title">
+          <span class="icon">📡</span>
+          Controle IoT & Logs do Sistema
+        </h2>
+        <div class="iot-panel">
+          <div class="iot-status">
+            <div class="status-indicator connected"></div>
+            <span>Dispositivo IoT Conectado</span>
+          </div>
+          <button id="viewLogs" class="btn-secondary">
+            <span class="btn-icon">📊</span>
+            Ver Logs da API
+          </button>
+        </div>
+        <div id="logsContainer" class="logs-container hidden">
+          <h3>Últimas Requisições da API</h3>
+          <div id="logsList" class="logs-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>
+          <strong>Sistema Integrado IoT + API:</strong>
+          Back-end em Node.js/Express com PostgreSQL | Front-end em HTML/CSS/JS
+          | Comunicação via API REST
+        </p>
+        <p class="tech-stack">
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">Express</span>
+          <span class="tech-pill">PostgreSQL</span>
+          <span class="tech-pill">REST API</span>
+          <span class="tech-pill">IoT</span>
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
