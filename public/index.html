@@ -36,8 +36,79 @@
         </div>
       </div>
     </header>
-
     <main class="container">
+      <!-- Seção de Monitoramento IoT -->
+      <section class="card">
+        <h2 class="card-title">
+          <span class="icon">🌡️</span>
+          Monitoramento IoT - Sensores
+        </h2>
+
+        <div class="sensors-status">
+          <div class="status-indicator connected" id="sensorStatus"></div>
+          <span id="sensorStatusText">Conectado</span>
+          <span class="last-update" id="lastUpdate"
+            >Última atualização: --</span
+          >
+        </div>
+
+        <div class="sensors-container">
+          <div class="sensor-card temperature">
+            <div class="sensor-icon">🌡️</div>
+            <div class="sensor-value" id="temperaturaValue">--</div>
+            <div class="sensor-label">Temperatura</div>
+            <div class="sensor-unit">°C</div>
+            <div class="sensor-trend" id="temperaturaTrend"></div>
+          </div>
+
+          <div class="sensor-card humidity">
+            <div class="sensor-icon">💧</div>
+            <div class="sensor-value" id="umidadeValue">--</div>
+            <div class="sensor-label">Umidade</div>
+            <div class="sensor-unit">%</div>
+            <div class="sensor-trend" id="umidadeTrend"></div>
+          </div>
+
+          <div class="sensor-card device">
+            <div class="sensor-icon">📱</div>
+            <div class="sensor-value" id="dispositivoValue">--</div>
+            <div class="sensor-label">Dispositivo</div>
+            <div class="sensor-location" id="localizacaoValue">--</div>
+          </div>
+        </div>
+
+        <div class="sensors-alerts" id="sensorsAlerts">
+          <!-- Alertas serão inseridos aqui -->
+        </div>
+
+        <div class="sensors-actions">
+          <button id="refreshSensors" class="btn-secondary">
+            <span class="btn-icon">🔄</span>
+            Atualizar Dados
+          </button>
+          <button id="viewSensorHistory" class="btn-secondary">
+            <span class="btn-icon">📊</span>
+            Ver Histórico
+          </button>
+          <button id="viewSensorStats" class="btn-secondary">
+            <span class="btn-icon">📈</span>
+            Estatísticas
+          </button>
+        </div>
+
+        <div
+          id="sensorHistoryContainer"
+          class="sensor-history-container hidden"
+        >
+          <h3>Histórico de Leituras</h3>
+          <div id="sensorHistoryList" class="sensor-history-list"></div>
+        </div>
+
+        <div id="sensorStatsContainer" class="sensor-stats-container hidden">
+          <h3>Estatísticas dos Sensores</h3>
+          <div id="sensorStatsContent" class="sensor-stats-content"></div>
+        </div>
+      </section>
       <!-- Formulário de Cadastro -->
       <section class="card">
         <h2 class="card-title">
@@ -151,7 +222,6 @@
         <p class="tech-stack">
           <span class="tech-pill">Node.js</span>
           <span class="tech-pill">Express</span>
-          <span class="tech-pill">PostgreSQL</span>
           <span class="tech-pill">REST API</span>
           <span class="tech-pill">IoT</span>
         </p>
